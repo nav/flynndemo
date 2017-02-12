@@ -130,7 +130,17 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 
 
-DATABASES = dict(default=os.environ.get('DATABASE_URL'))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PWD'),
+        'HOST': os.environ.get('MYSQL_HOST'),
+        'PORT': '3306',
+    }
+}
+
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
