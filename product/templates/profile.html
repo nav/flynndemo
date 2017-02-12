@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome back, {{ request.user.get_full_name }}</h1>
+
+<a href="/">Let's go to homepage</a>
+{% endblock %}

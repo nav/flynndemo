@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inventory App</title>
+</head>
+<body>
+
+{% if request.user.is_authenticated %}
+{{ request.user.get_full_name }} - <a href="{% url "account_logout" %}">Logout</a>
+{% endif %}
+<h1><a href="/">Inventory</a></h1>
+{% block content %}
+<ul>
+	<li><a href="/products/">Product list</a></li>
+</ul>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+Django==1.10.5
+MySQL-python==1.2.5
+django-allauth==0.30.0
+gunicorn
+oauthlib==2.0.1
+python-openid==2.2.5
+requests==2.13.0
+requests-oauthlib==0.7.0
