@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[packages]
+gunicorn = "*"
+requests = "*"
+django-allauth = "*"
+oauthlib = "*"
+mysqlclient = "*"
+Django = "*"
+
+[packages.Celery]
+extras = [ "redis",]

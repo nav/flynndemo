@@ -12,7 +12,6 @@ class KeycloakProvider(OAuth2Provider):
         return data['sub']
 
     def extract_common_fields(self, data):
-    	print data
         return dict(username=data.get('preferred_username'),
                     first_name=data.get('given_name'),
                     last_name=data.get('family_name'),
