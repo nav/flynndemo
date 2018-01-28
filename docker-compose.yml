@@ -1,0 +1,40 @@
+version: "3"
+
+volumes:
+  postgres_data:
+
+services:
+
+  django:
+    image: inventory
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
+    user: django
+    command: /usr/local/bin/django.sh
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
+    env_file: .env
+
+  celery:
+    image: inventory
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
+    user: django
+    command: /usr/local/bin/celery.sh
+    volumes:
+      - .:/app
+    env_file: .env
+
+  postgres:
+    image: postgres:9-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file: .env
+
+  redis:
+    image: redis:alpine
+

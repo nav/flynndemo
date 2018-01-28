@@ -15,18 +15,16 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o33anq_8-9)$^%tiey92y79$yq04!^m==$=tg&=hp@^_o&&dy4'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.inventory.lab.procurify.xyz']
-
+ALLOWED_HOSTS = ['.sso-demo.nav.sh', '.sso-demo.nav.io']
 
 # Application definition
 
@@ -44,7 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'keycloak',
-
+    'okta',
 ]
 
 MIDDLEWARE = [
@@ -77,20 +75,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'inventory.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'),
-        'USER': os.environ.get('MYSQL_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PWD'),
-        'HOST': os.environ.get('MYSQL_HOST'),
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DATABASE'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -110,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -124,16 +118,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/tmp/static'
 
+MEDIA_ROOT = '/tmp/media/'
 
 SITE_ID = 1
-
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -142,7 +135,16 @@ AUTHENTICATION_BACKENDS = (
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-KEYCLOAK_ACCESS_TOKEN_URL = 'https://id.procurify.xyz/auth/realms/Procurify/protocol/openid-connect/token/'
-KEYCLOAK_AUTHORIZE_URL = 'https://id.procurify.xyz/auth/realms/Procurify/protocol/openid-connect/auth/'
-KEYCLOAK_PROFILE_URL = 'https://id.procurify.xyz/auth/realms/Procurify/protocol/openid-connect/userinfo/'
+KEYCLOAK_ACCESS_TOKEN_URL = 'https://id.nav.sh/auth/realms/Home/protocol/openid-connect/token/'
+KEYCLOAK_AUTHORIZE_URL = 'https://id.nav.sh/auth/realms/Home/protocol/openid-connect/auth/'
+KEYCLOAK_PROFILE_URL = 'https://id.nav.sh/auth/realms/Home/protocol/openid-connect/userinfo/'
 
+OKTA_ACCESS_TOKEN_URL = 'https://procurify.okta.com/oauth2/v1/token'
+OKTA_AUTHORIZE_URL = 'https://procurify.okta.com/oauth2/v1/authorize'
+OKTA_PROFILE_URL = 'https://procurify.okta.com/oauth2/v1/userinfo'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'okta': {
+        'SCOPE': ['profile', 'openid'],
+    }
+}

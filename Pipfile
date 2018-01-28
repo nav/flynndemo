@@ -7,8 +7,8 @@ gunicorn = "*"
 requests = "*"
 django-allauth = "*"
 oauthlib = "*"
-mysqlclient = "*"
-Django = "*"
+psycopg2 = "*"
+django = "*"
 
-[packages.Celery]
+[packages.celery]
 extras = [ "redis",]

@@ -7,8 +7,6 @@ from django.contrib.sessions.models import Session
 from django.views.decorators.csrf import csrf_exempt 
 from django.utils.decorators import method_decorator
 
-from allauth.compat import reverse
-from allauth.utils import build_absolute_uri
 from allauth.socialaccount.models import SocialToken, SocialAccount
 from allauth.socialaccount.providers.oauth2.views import (OAuth2Adapter,
                                                           OAuth2LoginView,
