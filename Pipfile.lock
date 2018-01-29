@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e34d0ea80562a95514a9ff3a8388c51c090d7fd7de53d953f47e78096bb7ba30"
+            "sha256": "729b6f08a7c1390910f2cc85efb9ff3f3045091f111db263066e71752b2450b0"
         },
         "requires": {},
         "sources": [
@@ -71,6 +71,9 @@
         },
         "vine": {
             "version": "==1.1.4"
+        },
+        "whitenoise": {
+            "version": "==3.3.1"
         }
     },
     "develop": {}

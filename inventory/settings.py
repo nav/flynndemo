@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,9 +121,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/tmp/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = '/tmp/media/'
 
@@ -135,9 +137,9 @@ AUTHENTICATION_BACKENDS = (
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-KEYCLOAK_ACCESS_TOKEN_URL = 'https://id.nav.sh/auth/realms/Home/protocol/openid-connect/token/'
-KEYCLOAK_AUTHORIZE_URL = 'https://id.nav.sh/auth/realms/Home/protocol/openid-connect/auth/'
-KEYCLOAK_PROFILE_URL = 'https://id.nav.sh/auth/realms/Home/protocol/openid-connect/userinfo/'
+KEYCLOAK_ACCESS_TOKEN_URL = 'https://id.nav.sh/auth/realms/Procurify/protocol/openid-connect/token/'
+KEYCLOAK_AUTHORIZE_URL = 'https://id.nav.sh/auth/realms/Procurify/protocol/openid-connect/auth/'
+KEYCLOAK_PROFILE_URL = 'https://id.nav.sh/auth/realms/Procurify/protocol/openid-connect/userinfo/'
 
 OKTA_ACCESS_TOKEN_URL = 'https://procurify.okta.com/oauth2/v1/token'
 OKTA_AUTHORIZE_URL = 'https://procurify.okta.com/oauth2/v1/authorize'
