@@ -146,6 +146,9 @@ OKTA_AUTHORIZE_URL = 'https://procurify.okta.com/oauth2/v1/authorize'
 OKTA_PROFILE_URL = 'https://procurify.okta.com/oauth2/v1/userinfo'
 
 SOCIALACCOUNT_PROVIDERS = {
+    'keycloak': {
+        'SCOPE': ['profile', 'openid'],
+    },
     'okta': {
         'SCOPE': ['profile', 'openid'],
     }
