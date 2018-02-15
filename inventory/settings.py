@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.sso-demo.nav.sh', '.sso-demo.nav.io', 'sso.procurify.com']
+ALLOWED_HOSTS = ['.sso.nav.sh', '.sso.nav.io',]
 
 # Application definition
 
