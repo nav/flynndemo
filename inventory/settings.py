@@ -152,5 +152,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'okta': {
         'SCOPE': ['profile', 'openid'],
+    },
+    'azure': {
+        'SCOPE': ['User.Read', 'profile', 'email', 'openid']
     }
 }
