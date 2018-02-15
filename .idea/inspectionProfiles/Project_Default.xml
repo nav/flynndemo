@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="72">
+          <list size="73">
             <item index="0" class="java.lang.String" itemvalue="django-ckeditor" />
             <item index="1" class="java.lang.String" itemvalue="Mezzanine" />
             <item index="2" class="java.lang.String" itemvalue="python-dateutil" />
@@ -77,6 +77,7 @@
             <item index="69" class="java.lang.String" itemvalue="whitenoise" />
             <item index="70" class="java.lang.String" itemvalue="repoze.who" />
             <item index="71" class="java.lang.String" itemvalue="WebOb" />
+            <item index="72" class="java.lang.String" itemvalue="django-allauth" />
           </list>
         </value>
       </option>
